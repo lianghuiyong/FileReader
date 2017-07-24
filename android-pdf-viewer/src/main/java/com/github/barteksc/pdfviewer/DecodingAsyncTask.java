@@ -21,6 +21,7 @@ import android.os.AsyncTask;
 import com.github.barteksc.pdfviewer.source.DocumentSource;
 import com.shockwave.pdfium.PdfDocument;
 import com.shockwave.pdfium.PdfiumCore;
+import com.socks.library.KLog;
 
 class DecodingAsyncTask extends AsyncTask<Void, Void, Throwable> {
 

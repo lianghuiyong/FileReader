@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
 
     private void displayFromAsset(String assetFileName) {
         pdfView.fromAsset(assetFileName)
-                .onPageChange(this)
+                //.onPageChange(this)
                 .swipeHorizontal(true)
-                .enableAnnotationRendering(true)
+                //.enableAnnotationRendering(true)
                 .onLoad(this)
                 .scrollHandle(new DefaultScrollHandle(this))
-                .spacing(10) // in dp
+                //.spacing(10) // in dp
                 .load();
     }
 

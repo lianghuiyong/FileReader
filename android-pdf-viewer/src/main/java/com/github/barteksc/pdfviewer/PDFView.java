@@ -387,6 +387,7 @@ public class PDFView extends RelativeLayout {
         if (recycled) {
             return;
         }
+        state = State.SHOWN;
 
         // Check the page number and makes the
         // difference between UserPages and DocumentPages
@@ -400,14 +401,30 @@ public class PDFView extends RelativeLayout {
             }
         }
 
-        loadPages();
-
-        if (scrollHandle != null && !documentFitsView()) {
-            scrollHandle.setPageNum(currentPage + 1);
+        // Reset the zoom and center the page on the screen
+        resetZoom();
+        if (true) {
+            if (swipeVertical) {
+                animationManager.startYAnimation(currentYOffset, calculateCenterOffsetForPage(pageNb));
+            } else {
+                animationManager.startXAnimation(currentXOffset, calculateCenterOffsetForPage(pageNb));
+            }
+        } else {
+            if (swipeVertical) {
+                moveTo(getCurrentXOffset(), calculateCenterOffsetForPage(pageNb));
+            } else {
+                moveTo(calculateCenterOffsetForPage(pageNb), getCurrentYOffset());
+            }
         }
 
+        loadPages();
+
+/*        if (scrollBar != null) {
+            scrollBar.pageChanged(currentPage);
+        }*/
+
         if (onPageChangeListener != null) {
-            onPageChangeListener.onPageChanged(currentPage, getPageCount());
+            onPageChangeListener.onPageChanged(currentPage + 1, getPageCount());
         }
     }
 

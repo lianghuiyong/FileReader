@@ -39,4 +39,6 @@ android {
 
 dependencies {
     compile 'com.github.barteksc:pdfium-android:1.7.0'
+    //Log
+    compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
 }
